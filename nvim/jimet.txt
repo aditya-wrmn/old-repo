@@ -62,6 +62,8 @@ Replace text (command mode)
 ======
 :{line start},{line end}s/{search text}/{replace text}	search and replace for spesific line
 :%s/{search text}/{replace text}				search and replace for entire file
+\<{search text}\>						search text only in single word
+
 
 /g	global
 /i	incasesensitive
