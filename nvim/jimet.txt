@@ -1,0 +1,90 @@
+navigation
+==========
+h	left
+j	down
+k	up
+l	rigth
+^	home
+$	end
+;	last navigation
+,	opposite last navigation
+G	last line
+gg	first line
+w	words forward
+e	end of the word
+b	words backward
+{	paragraph backward
+}	paragraph forward
+(	sentences backward
+)	sentences forward
+
+search 
+=========
+search can use regex
+=========
+/	pattern search
+n 	next search
+N	before search
+*	search next for the identifier under the cursor
+# 	search prev for the identifier under the cursor
+gd	search local declaration of identifier under the cursor
+gD	search global declaration of identifier under the cursor
+
+scrolling
+========
+ctrl-Y	line upward 1 line
+ctrl-E	line downward 1 line
+ctrl-U	line upward 1/2 window
+ctrl-D	line downward 1/2 window
+ctrl-F	page down
+ctrl-B	page up
+
+insert
+=======
+a	append text after cursor
+i	insert text before cursor
+o	insert text in new line
+
+delete text
+=======
+del	delete character under and after cursor
+x	delete character under and after cursor
+dd	delete lines
+d<nav>	delete char to nav
+
+copy text
+=======
+y	yank text (visual mode)
+yy	yank lines
+Y	yank lines
+
+Replace text (command mode)
+======
+:{line start},{line end}s/{search text}/{replace text}	search and replace for spesific line
+:%s/{search text}/{replace text}				search and replace for entire file
+
+/g	global
+/i	incasesensitive
+/I	casesensitive
+/c	confirmation
+
+
+cw	change word
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
