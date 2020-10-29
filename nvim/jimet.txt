@@ -64,6 +64,7 @@ Replace text (command mode)
 :%s/{search text}/{replace text}				search and replace for entire file
 \<{search text}\>						search text only in single word
 
+
 /g	global
 /i	incasesensitive
 /I	casesensitive
