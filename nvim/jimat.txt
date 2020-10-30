@@ -1,0 +1,47 @@
+auto complete
+
+coc 
+ycm =>you complete me
+
+keyword file searching
+fzm
+
+file searching
+Gfiles for shrotcut ctrl+P <C-p>
+
+
+for plugin 
+Plug ''
+Plug 'neoclide/coc.vim',{'branch':'realese'}
+Plug 'junegunn/fzf', {'do':{->fzf#install()}}
+Plug 'junegunn/fzf.vim'
+
+
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nnoremap <C-p> :Gfiles<CR>
+
+ctrl+^ jump to before line
+
+coc plugin need to install
+	snippet
+	pairs
+	tsserver
+	eslint
+	prettier
+	json
+	
+	
+:CocInstall coc-snippets
+:CocCommand snippets.editSnippets
+
+snippet cl "console.log()" b
+console.log($1);
+endsnippet
+
+
+ctrl+O jump to before line
+
+F2 rename
+
+
