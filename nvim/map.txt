@@ -1,0 +1,9 @@
+nmap 	normal mode map
+imap	insert mode map
+vmap	visual and select mode map
+smap	select mode map
+xmap	visual mode map
+cmap	command-line mode map
+omap	operating pending map
+
+
