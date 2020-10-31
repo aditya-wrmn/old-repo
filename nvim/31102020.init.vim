@@ -41,8 +41,6 @@ call plug#begin('~/.vim/plugged')
 
 " Neovim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'tjdevries/nlua.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
 
 Plug 'rust-lang/rust.vim'
@@ -62,9 +60,6 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 
 
 " telescope requirements...
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/telescope.nvim'
 
 "  I AM SO SORRY FOR DOING COLOR SCHEMES IN MY VIMRC, BUT I HAVE
 "  TOOOOOOOOOOOOO
@@ -79,6 +74,9 @@ Plug 'chriskempson/base16-vim'
 " some plugin for status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+"coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -150,16 +148,7 @@ let g:fzf_branch_actions = {
       \   'confirm': v:false,
       \ },
       \}
-" lua require('telescope').setup({defaults = {file_matching_strategy = "prime" }})
 
-nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
-nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
-nnoremap <leader>vsh :lua vim.lsp.buf.signature_help()<CR>
-nnoremap <leader>vrr :lua vim.lsp.buf.references()<CR>
-nnoremap <leader>vrn :lua vim.lsp.buf.rename()<CR>
-nnoremap <leader>vh :lua vim.lsp.buf.hover()<CR>
-nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
-nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
 
 nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>ga :Git fetch --all<CR>
@@ -167,8 +156,6 @@ nnoremap <leader>grum :Git rebase upstream/master<CR>
 nnoremap <leader>grom :Git rebase origin/master<CR>
 nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
-nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -176,9 +163,6 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For >")})<CR>
-nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
-nnoremap <Leader>pf :lua require('telescope.builtin').find_files()<CR>
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
@@ -205,11 +189,6 @@ nmap <leader>vtm :highlight Pmenu ctermbg=gray guibg=gray
 inoremap <C-c> <esc>
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-lua require'nvim_lsp'.tsserver.setup{ on_attach=require'completion'.on_attach }
-lua require'nvim_lsp'.clangd.setup{ on_attach=require'completion'.on_attach }
-lua require'nvim_lsp'.gopls.setup{ on_attach=require'completion'.on_attach }
-lua require'nvim_lsp'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
-" lua require'nvim_lsp'.sumneko_lua.setup{ on_attach=require'completion'.on_attach }
 
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
@@ -244,11 +223,6 @@ endfun
 " ES
 com! W w
 
-fun! ThePrimeagen_LspHighlighter()
-    lua print("Testing")
-    lua package.loaded["my_lspconfig"] = nil
-    lua require("my_lspconfig")
-endfun
 
 fun! GotoBuffer(ctrlId)
     if (a:ctrlId > 9) || (a:ctrlId < 0)
@@ -298,7 +272,3 @@ endfun
 
 com! SetLspVirtualText call ThePrimeagen_LspHighlighter()
 
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
-augroup END
