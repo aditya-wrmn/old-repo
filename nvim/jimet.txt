@@ -73,9 +73,15 @@ Replace text (command mode)
 cw	change word
 
 
+fzf
+======
+ctrl p  find all files in git
+ctrl o  find all files 
+ctrl [  buffer
 
-
-
+while searching
+ctrl v  vertical split
+ctrl x  horizontal split
 
 
 
