@@ -64,6 +64,11 @@ Replace text (command mode)
 :%s/{search text}/{replace text}				search and replace for entire file
 \<{search text}\>						search text only in single word
 
+for comment 
+    :66,70s/^/\/\//\
+for uncomment
+    :66,70s/^\/\//\
+
 /g	global
 /i	incasesensitive
 /I	casesensitive
